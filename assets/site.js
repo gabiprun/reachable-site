@@ -7,7 +7,9 @@
 
    1. "Larger text" toggle, remembered in localStorage.
    2. Collapsible menu on narrow screens.
-   3. Phone numbers, email and portal link filled in from site-config.js.
+   3. Phone numbers, email, prices and portal link filled in from
+      site-config.js. Prices are also written into the HTML in words, so a
+      page with JavaScript off still states the price correctly.
    4. Form submit helper: POST JSON to apiBase + /api/intake/<program>
       when apiBase is set; otherwise build a mailto: link with the
       answers in the body. Honeypot field named "website" is silently
@@ -99,6 +101,20 @@
         if (el.tagName === 'A') { el.href = 'mailto:' + cfg.email; }
       });
     }
+
+    // Prices (site-config.js pricing). The HTML already says "$12" and "$5"
+    // in words, so a browser with JavaScript off reads the right thing; this
+    // only keeps the pages in step when the board changes a price.
+    var pricing = cfg.pricing || {};
+    qsa('[data-price]').forEach(function (el) {
+      var value = pricing[el.getAttribute('data-price') + 'Year'];
+      if (value) { el.textContent = value; }
+    });
+
+    // Self-serve ordering: "ask us" until the account pages exist.
+    var ordering = !!cfg.orderingReady;
+    qsa('[data-ordering-status]').forEach(function (el) { el.hidden = ordering; });
+    qsa('[data-ordering-ready]').forEach(function (el) { el.hidden = !ordering; });
 
     // Reachable Number web portal: link only when a backend exists.
     qsa('[data-portal]').forEach(function (el) {

@@ -40,5 +40,24 @@ window.REACHABLE = {
 
   // Where the email fallback goes. Also shown in the footer and on the
   // Call us block. Only works once the reachablesociety.ca mailbox exists.
-  email: 'hello@reachablesociety.ca'
+  email: 'hello@reachablesociety.ca',
+
+  // What a Reachable Number costs (DESIGN.md §11.1, owner-set 2026-09-02).
+  // THIS IS THE ONE PLACE THE PRICES LIVE. Pages carry the same words in
+  // plain HTML so they are still correct with JavaScript turned off; if you
+  // change a price here, change it in number.html and index.html too.
+  //
+  // Sponsored accounts pay nothing. That is not a discount code or a
+  // hardship program with forms — a person says the price is out of reach
+  // and we cover it. Never add a field here that asks for proof.
+  pricing: {
+    caYear: '$12',      // one Canadian number, per year, CAD
+    usYear: '$5',       // one US number, per year, CAD
+    currency: 'CAD'
+  },
+
+  // false = there is no web account / self-serve ordering yet. Pages show
+  // "ask us and we will set it up" instead of a sign-up link.
+  // true  = the account pages are live (apiBase must be set as well).
+  orderingReady: false
 };
