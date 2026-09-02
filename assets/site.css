@@ -1,0 +1,449 @@
+/* ============================================================
+   Reachable — shared styles for every page.
+   No build step. No framework. Edit this file directly.
+
+   Accessibility rules baked in here:
+   - Base text 18px, line-height 1.6 (DESIGN.md §9).
+   - Body text contrast >= 7:1 (WCAG AAA). Buttons >= 4.5:1.
+   - Every clickable thing is at least 44px tall.
+   - Visible two-tone focus ring (white inner + dark outer) so it
+     shows on any background.
+   - "Larger text" mode = class .text-larger on <html> (set by
+     assets/site.js, remembered in localStorage).
+   - No animation at all; prefers-reduced-motion is respected anyway.
+   ============================================================ */
+
+:root {
+  --ink: #1a1a1a;          /* body text            17.4:1 on white */
+  --ink-soft: #3b3b3b;     /* secondary text       10.9:1 on white */
+  --paper: #ffffff;
+  --paper-alt: #f2f6f8;    /* alternate section background */
+  --brand: #0b4f6c;        /* deep teal: 8.9:1 on white, white text on it 8.9:1 */
+  --brand-dark: #073a50;
+  --brand-soft: #dceaf0;   /* light teal for cards and the nav band */
+  --call: #14632f;         /* green for "Call" buttons: white text 7.3:1 */
+  --call-dark: #0e4a23;
+  --warn-bg: #fff4d6;      /* "coming soon" notices */
+  --warn-border: #b36b00;
+  --error: #a4001d;        /* 8.1:1 on white */
+  --error-bg: #fde8ec;
+  --ok-bg: #e3f4e8;
+  --visited: #5a3a7a;      /* 9.0:1 on white */
+  --focus-outer: #1a1a1a;
+  --focus-inner: #ffffff;
+  --radius: 12px;
+  --measure: 42rem;        /* comfortable line length for reading */
+}
+
+html {
+  font-size: 18px;
+  line-height: 1.6;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Larger text mode: everything on the page is sized in rem, so
+   changing this one number scales the whole site. */
+html.text-larger { font-size: 22px; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; }
+
+img, svg { max-width: 100%; height: auto; }
+
+.wrap { max-width: 64rem; margin: 0 auto; padding-left: 1rem; padding-right: 1rem; }
+.measure { max-width: var(--measure); }
+
+h1, h2, h3 { line-height: 1.25; margin: 0 0 0.5em; overflow-wrap: break-word; }
+h1 { font-size: clamp(1.9rem, 1.4rem + 2vw, 2.5rem); }
+h2 { font-size: 1.6rem; margin-top: 2rem; }
+h3 { font-size: 1.25rem; margin-top: 1.5rem; }
+
+p, ul, ol, dl { margin: 0 0 1rem; max-width: var(--measure); }
+li { margin-bottom: 0.4rem; }
+ul, ol { padding-left: 1.4rem; }
+
+.lead { font-size: 1.25rem; }
+.small { font-size: 0.95rem; }
+.soft { color: var(--ink-soft); }
+
+a { color: var(--brand); text-decoration: underline; text-decoration-thickness: 0.12em; text-underline-offset: 0.15em; }
+a:visited { color: var(--visited); }
+a:hover { color: var(--brand-dark); text-decoration-thickness: 0.2em; }
+
+/* One focus style for everything: white ring, then a dark ring.
+   Visible on white, on teal, on green, on black. */
+:focus-visible {
+  outline: 3px solid var(--focus-inner);
+  outline-offset: 0;
+  box-shadow: 0 0 0 6px var(--focus-outer);
+  border-radius: 4px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+  white-space: nowrap; border: 0;
+}
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -10rem;
+  z-index: 100;
+  background: var(--brand);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 var(--radius) var(--radius);
+  font-weight: 700;
+}
+.skip-link:focus { top: 0; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;              /* 54px at 18px; well over 44px */
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius);
+  border: 3px solid transparent;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  background: var(--brand);
+  color: #fff;
+}
+.btn:visited { color: #fff; }
+.btn:hover { background: var(--brand-dark); color: #fff; }
+.btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+
+.btn-secondary { background: #fff; color: var(--brand); border-color: var(--brand); }
+.btn-secondary:visited { color: var(--brand); }
+.btn-secondary:hover { background: var(--brand-soft); color: var(--brand-dark); }
+
+.btn-call { background: var(--call); font-size: 1.25rem; padding: 0.85rem 1.5rem; }
+.btn-call:hover { background: var(--call-dark); }
+
+.btn-tool { background: #fff; color: var(--ink); border-color: var(--ink); min-height: 2.75rem; font-size: 1rem; }
+.btn-tool:visited { color: var(--ink); }
+.btn-tool:hover { background: var(--paper-alt); color: var(--ink); }
+.btn-tool[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.btn-tool[aria-pressed="true"]::before { content: "\2713\00a0"; }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1rem 0 1.5rem; }
+
+/* ---------- Header and navigation ---------- */
+.site-header { background: #fff; border-bottom: 3px solid var(--brand); }
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.brand:visited { color: var(--ink); }
+.brand:hover { color: var(--brand); }
+.brand img { width: 2.5rem; height: 2.5rem; flex: none; }
+.header-tools { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.nav-toggle { display: none; }
+/* The text-size button needs JavaScript; hide it when there is none.
+   Browser zoom (Ctrl or Cmd and +) always works instead. */
+html:not(.js) [data-text-toggle] { display: none; }
+/* Show a block only with JavaScript (.js-only) or only without it (.no-js-only). */
+html:not(.js) .js-only { display: none; }
+html.js .no-js-only { display: none; }
+
+.site-nav { background: var(--brand-soft); }
+.nav-list {
+  list-style: none;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0.35rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+.nav-list li { margin: 0; }
+.nav-list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  color: var(--brand-dark);
+  font-weight: 600;
+  text-decoration: none;
+}
+.nav-list a:visited { color: var(--brand-dark); }
+.nav-list a:hover { background: #fff; text-decoration: underline; }
+.nav-list a[aria-current="page"] { background: var(--brand); color: #fff; }
+
+/* On narrow screens, when JavaScript is running, the menu collapses
+   behind a "Menu" button. Without JavaScript the full menu always shows. */
+@media (max-width: 759px) {
+  .js .nav-toggle { display: inline-flex; }
+  .js .site-nav { display: none; }
+  .js .site-header.nav-open .site-nav { display: block; }
+  .nav-list { flex-direction: column; gap: 0.1rem; padding: 0.5rem 1rem 1rem; }
+  .nav-list a { display: flex; width: 100%; }
+}
+
+/* ---------- Page sections ---------- */
+main { display: block; }
+.section { padding: 2rem 0; }
+.section-alt { background: var(--paper-alt); }
+.hero { background: var(--paper-alt); padding: 2.5rem 0 2rem; }
+.hero h1 { margin-bottom: 0.75rem; }
+
+.mission {
+  border-left: 6px solid var(--brand);
+  background: #fff;
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  font-size: 1.15rem;
+  max-width: var(--measure);
+}
+.mission p { margin: 0; }
+
+.notice {
+  background: var(--warn-bg);
+  border: 2px solid var(--warn-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  max-width: var(--measure);
+}
+.notice-info { background: var(--brand-soft); border-color: var(--brand); }
+.notice-plain { background: #fff; border-color: var(--ink); }
+.notice > :last-child { margin-bottom: 0; }
+.notice h2, .notice h3 { margin-top: 0; }
+
+.never { border: 3px solid var(--ink); border-radius: var(--radius); padding: 1rem 1.25rem; max-width: var(--measure); background: #fff; }
+.never h2 { margin-top: 0; }
+.never > :last-child { margin-bottom: 0; }
+
+/* Program cards on the home page */
+.cards {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  max-width: none;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+}
+.cards li { margin: 0; }
+.card {
+  height: 100%;
+  background: #fff;
+  border: 2px solid var(--brand-soft);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+.card h3, .card h2 { margin-top: 0; font-size: 1.35rem; }
+.card p { flex: 1 0 auto; }
+.card .btn { margin-top: auto; align-self: flex-start; }
+
+/* Numbered steps with big circles */
+.steps { list-style: none; padding: 0; counter-reset: step; }
+.steps li { position: relative; padding-left: 3.25rem; margin-bottom: 1rem; min-height: 2.5rem; }
+.steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0; top: 0;
+  width: 2.5rem; height: 2.5rem;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Definition-style lists (About page values, contact rows) */
+dt { font-weight: 700; margin-top: 0.75rem; }
+dd { margin: 0 0 0.5rem; }
+
+/* Phone number shown inline in text */
+.tel-inline { font-weight: 700; white-space: nowrap; }
+
+/* ---------- "Call us" block at the end of every page ---------- */
+.call-us { background: var(--brand); color: #fff; padding: 2.5rem 0; margin-top: 3rem; }
+.call-us h2 { color: #fff; margin-top: 0; font-size: 2rem; }
+.call-us p { color: #fff; }
+.call-us a { color: #fff; }
+.call-card {
+  background: #fff;
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin: 1rem 0;
+  max-width: var(--measure);
+}
+.call-card p { color: var(--ink); }
+.call-card a { color: var(--brand); }
+.call-label { font-weight: 700; margin-bottom: 0.25rem; }
+/* The phone number is the biggest text on the page on purpose. */
+.call-number {
+  font-size: clamp(2rem, 1.5rem + 3vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0.25rem 0;
+  letter-spacing: 0.02em;
+  overflow-wrap: anywhere;
+}
+.call-number a { color: var(--call); text-decoration-thickness: 0.1em; }
+.call-number a:visited { color: var(--call); }
+.call-status {
+  background: var(--warn-bg);
+  border-left: 6px solid var(--warn-border);
+  padding: 0.5rem 0.75rem;
+  margin: 0.5rem 0 0;
+  font-weight: 600;
+}
+.call-emergency { font-weight: 700; font-size: 1.15rem; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: #1a1a1a; color: #fff; padding: 2rem 0; }
+.site-footer p, .site-footer a { color: #fff; }
+.site-footer a:visited { color: #fff; }
+.footer-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+.footer-brand { font-weight: 800; font-size: 1.3rem; margin-bottom: 0.25rem; }
+.footer-h { font-weight: 700; margin-bottom: 0.5rem; }
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer li { margin: 0; }
+.site-footer li a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 0.25rem; }
+
+/* ---------- Forms ---------- */
+.form {
+  max-width: var(--measure);
+  background: #fff;
+  border: 2px solid var(--brand-soft);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin: 1rem 0 2rem;
+}
+.field { margin-bottom: 1.25rem; }
+label, legend { display: block; font-weight: 700; margin-bottom: 0.35rem; }
+legend { padding: 0; }
+.hint { display: block; font-weight: 400; color: var(--ink-soft); font-size: 0.95rem; }
+input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+  font: inherit;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.7rem 0.8rem;
+  border: 2px solid var(--ink-soft);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+}
+textarea { min-height: 7rem; resize: vertical; }
+[aria-invalid="true"] { border-color: var(--error); border-width: 3px; }
+
+fieldset { border: 2px solid var(--brand-soft); border-radius: var(--radius); padding: 0.75rem 1rem 0.5rem; margin: 0 0 1.25rem; min-width: 0; }
+fieldset legend { font-size: 1.05rem; padding: 0 0.4rem; }
+
+/* A big, easy-to-hit choice (radio or checkbox) */
+.choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  min-height: 3rem;
+  padding: 0.6rem 0.75rem;
+  margin: 0 0 0.5rem;
+  border: 2px solid var(--brand-soft);
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.choice input { width: 1.5rem; height: 1.5rem; margin: 0.15rem 0 0; flex: none; accent-color: var(--brand); }
+.choice:has(input:checked) { border-color: var(--brand); background: var(--brand-soft); }
+.choice:has(input:focus-visible) { outline: 3px solid var(--focus-inner); box-shadow: 0 0 0 6px var(--focus-outer); }
+
+/* Honeypot: hidden from people, present for bots. Never display:none
+   so that it stays in the form for the no-JavaScript email fallback. */
+.hp { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+.form-status { margin-top: 1rem; padding: 1rem; border-radius: 8px; font-weight: 600; max-width: none; }
+.form-status:empty { display: none; }
+.form-status.ok { background: var(--ok-bg); border: 2px solid var(--call); }
+.form-status.err { background: var(--error-bg); border: 2px solid var(--error); }
+.form-status p { margin-bottom: 0.5rem; }
+.form-status p:last-child { margin-bottom: 0; }
+.form-copy { margin-top: 0.75rem; }
+.form-copy textarea { min-height: 9rem; font-size: 0.95rem; }
+.required-note { color: var(--ink-soft); }
+abbr[title="required"] { text-decoration: none; color: var(--error); font-weight: 800; }
+
+/* ---------- Benefits finder ---------- */
+.screener .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1rem 0; }
+.results { margin-top: 1.5rem; }
+.result {
+  background: #fff;
+  border: 3px solid var(--brand);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  max-width: var(--measure);
+}
+.result h3 { margin-top: 0; font-size: 1.4rem; }
+.result .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+.tags { margin: 0 0 0.75rem; }
+.tag {
+  display: inline-block;
+  background: var(--brand-soft);
+  color: var(--brand-dark);
+  border-radius: 6px;
+  padding: 0.15rem 0.5rem;
+  margin: 0 0.5rem 0.4rem 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.result-first { background: var(--warn-bg); border-left: 6px solid var(--warn-border); padding: 0.5rem 0.75rem; font-weight: 600; }
+
+/* ---------- Motion and system settings ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* Windows High Contrast / forced colours: keep borders so buttons
+   and choices are still visible as shapes. */
+@media (forced-colors: active) {
+  .btn, .choice, .card, .result, .call-card, .nav-list a[aria-current="page"], .form { border: 2px solid ButtonText; }
+  .skip-link:focus { border: 2px solid ButtonText; }
+}
+
+@media print {
+  .site-nav, .header-tools, .skip-link { display: none; }
+  .call-us { background: none; color: #000; border-top: 3px solid #000; }
+  .call-us h2, .call-us p, .call-us a { color: #000; }
+}

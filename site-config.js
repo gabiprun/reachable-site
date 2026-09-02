@@ -1,0 +1,44 @@
+/* ============================================================
+   Reachable — site configuration.
+   THIS IS THE ONE PLACE PHONE NUMBERS AND ADDRESSES LIVE.
+
+   Every page reads this file (assets/site.js fills in the numbers).
+   Edit here, save, commit, push — the whole site updates.
+
+   Rules (from DESIGN.md §3):
+   - Never invent a real-looking number. Until a number is live it
+     stays "(250) 000-0000" and numbersReady stays false, which makes
+     every page show "number coming soon" instead of a phone link.
+   - When the real numbers are assigned in the BulkVS portal, put them
+     here in the display format you want people to read, then set
+     numbersReady to true.
+   - Browsers with JavaScript turned off cannot read this file, so the
+     HTML pages carry a copy of the placeholder text. After you change
+     the numbers here, run:  python3 tools/sync_numbers.py
+     to copy them into the HTML as well.
+   ============================================================ */
+window.REACHABLE = {
+  numbers: {
+    // The Reachable Line: the free help line anyone can call.
+    line: '(250) 000-0000',
+    // The Reachable Number access line: check messages, change forwarding.
+    access: '(250) 000-0000',
+    // Office / admin number. Leave empty ('') to hide it everywhere.
+    office: ''
+  },
+
+  // false = the numbers above are placeholders. Pages say "coming soon"
+  // and do NOT turn them into tap-to-call links.
+  // true  = the numbers are live. Pages show tap-to-call links.
+  numbersReady: false,
+
+  // Base URL of the Reachable backend (DESIGN.md §5), for example
+  // 'https://reachable-api.prundaru.ca'. No trailing slash.
+  // Empty = no backend yet: forms open the visitor's email app instead
+  // (a mailto: link addressed to the email below, with the answers in the body).
+  apiBase: '',
+
+  // Where the email fallback goes. Also shown in the footer and on the
+  // Call us block. Only works once the reachablesociety.ca mailbox exists.
+  email: 'hello@reachablesociety.ca'
+};

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Reachable. Nobody out of reach.">
+  <rect width="1200" height="630" fill="#0b4f6c"/>
+  <rect x="80" y="80" width="140" height="140" rx="30" fill="#ffffff"/>
+  <text x="138" y="188" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="96" fill="#0b4f6c">R</text>
+  <path d="M176 118a22 22 0 0 1 22 22" fill="none" stroke="#0b4f6c" stroke-width="8" stroke-linecap="round"/>
+  <path d="M176 96a44 44 0 0 1 44 44" fill="none" stroke="#0b4f6c" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="176" cy="140" r="7" fill="#0b4f6c"/>
+  <text x="260" y="180" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="110" fill="#ffffff">Reachable</text>
+  <text x="80" y="330" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="64" fill="#ffffff">Nobody out of reach.</text>
+  <text x="80" y="420" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#dceaf0">Free help line from any phone. A permanent phone number</text>
+  <text x="80" y="468" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#dceaf0">that follows you. Help claiming benefits. Tech for tiny nonprofits.</text>
+  <text x="80" y="560" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#ffffff">Reachable Access Society (incorporation in progress) · Victoria, BC</text>
+</svg>

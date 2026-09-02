@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reachable Benefits — find benefits you may qualify for</title>
+  <meta name="description" content="Answer a few questions to see which disability and seniors benefits you may qualify for, with the phone number to call. Then ask a Reachable volunteer to help you apply.">
+  <link rel="canonical" href="https://reachable.prundaru.ca/benefits.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#0b4f6c">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Reachable">
+  <meta property="og:title" content="Reachable Benefits — find benefits you may qualify for">
+  <meta property="og:description" content="Answer a few questions to see which disability and seniors benefits you may qualify for, with the phone number to call. Then ask a Reachable volunteer to help you apply.">
+  <meta property="og:url" content="https://reachable.prundaru.ca/benefits.html">
+  <meta property="og:image" content="https://reachable.prundaru.ca/assets/og.svg">
+  <link rel="stylesheet" href="assets/site.css">
+  <!-- Numbers and email live in site-config.js. site.js is loaded here, not
+       deferred, so the "Larger text" choice is applied before the page paints. -->
+  <script src="site-config.js"></script>
+  <script src="assets/site.js"></script>
+</head>
+<body>
+<!-- shared: header (identical on every page; edit in all pages together) -->
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="index.html"><img src="favicon.svg" alt="" width="40" height="40">Reachable</a>
+    <div class="header-tools">
+      <button type="button" class="btn btn-tool" data-text-toggle aria-pressed="false">Larger text</button>
+      <button type="button" class="btn btn-tool nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+    </div>
+  </div>
+  <nav class="site-nav" id="site-nav" aria-label="Main menu">
+    <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="line.html">Reachable Line</a></li>
+        <li><a href="number.html">Reachable Number</a></li>
+        <li><a href="benefits.html" aria-current="page">Reachable Benefits</a></li>
+        <li><a href="tech.html">Reachable Tech</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="donate.html">Donate</a></li>
+    </ul>
+  </nav>
+</header>
+<!-- /shared: header -->
+<main id="main" tabindex="-1">
+  <section class="hero">
+    <div class="wrap">
+      <h1>Reachable Benefits</h1>
+      <p class="lead">Find out which benefits you may already qualify for. Then get a person to help you apply.</p>
+      <div class="btn-row">
+        <a class="btn btn-call" href="#finder">Start the benefits finder</a>
+        <a class="btn btn-secondary" href="#apply">Help me apply</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Who it's for</h2>
+      <ul>
+        <li>People with a disability or a long-term health problem.</li>
+        <li>Seniors, especially on a low income.</li>
+        <li>Family members and caregivers helping someone else.</li>
+        <li>Anyone who suspects there is money or help they are not getting.</li>
+      </ul>
+      <p>Many benefits are only paid to people who know to ask, and the forms can be hard. That is what we help with.</p>
+
+      <h2>What you get</h2>
+      <ul>
+        <li><strong>The benefits finder</strong> on this page. A few questions, no personal details, and a list of programs you may qualify for, each with the phone number to call.</li>
+        <li><strong>Plain-language information</strong> about each program: what it is, who qualifies, how to apply, and where the information came from.</li>
+        <li><strong>A person to help you apply.</strong> A trained Reachable volunteer, called a navigator, sits with you by phone or in person, helps you fill in the forms, and helps with the part a doctor has to sign.</li>
+        <li><strong>The same help by phone.</strong> Call the Reachable Line and ask about any benefit. You do not need this website.</li>
+      </ul>
+
+      <h2>How to start</h2>
+      <ol class="steps">
+        <li>Answer the questions below. Skip anything you are not sure about.</li>
+        <li>Read your results. Each one has a "Call" button for the office that runs the program.</li>
+        <li>Press "Help me apply" and a volunteer will get in touch.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="finder">
+    <div class="wrap">
+      <h2>Find out what you may qualify for</h2>
+      <p>Your answers stay in your browser. We do not send them anywhere. Only the government can decide for sure, and amounts change, so we show the date we last checked.</p>
+      <div id="screener-app">
+        <p class="js-only" role="status">Loading the questions…</p>
+        <div class="notice no-js-only">
+          <h3>The benefits finder needs JavaScript, which is turned off in your browser</h3>
+          <p>You do not need it to get help. Use the <a href="#apply">Help me apply</a> form below, or <a href="#call-us">call us</a> and a person will go through the questions with you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="apply">
+    <div class="wrap">
+      <h2>Help me apply</h2>
+      <p>A Reachable Benefits volunteer will get in touch and help you apply. Give us a phone number or an email so we can reach you.</p>
+      <p>Prefer to talk? <a href="#call-us">Call us</a> and say what you need. You never have to use this website to get help.</p>
+    <form class="form" data-intake="benefits" data-subject="Reachable Benefits: please help me apply" data-require-one="phone email" action="mailto:hello@reachablesociety.ca" method="post" enctype="text/plain">
+      <p class="required-note">Fields marked <abbr title="required">*</abbr> are required.</p>
+      <div class="field"><label for="benefits-name">Your name <abbr title="required">*</abbr></label><input id="benefits-name" name="name" type="text" required autocomplete="name"></div>
+      <div class="field"><label for="benefits-phone">Phone number <span class="hint">Phone or email: at least one, please.</span></label><input id="benefits-phone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="field"><label for="benefits-email">Email</label><input id="benefits-email" name="email" type="email" autocomplete="email"></div>
+      <div class="field"><label for="benefits-programs">Programs you want help with <span class="hint">One per line, or leave it to us. The finder fills this in when you press "Help me apply for these".</span></label><textarea id="benefits-programs" name="programs" data-list></textarea></div>
+      <div class="field"><label for="benefits-situation">A little about your situation <span class="hint">Optional. Only what you are comfortable sharing. Please do not include your Social Insurance Number or bank details.</span></label><textarea id="benefits-situation" name="situation"></textarea></div>
+      <div class="field"><label for="benefits-notes">Anything else</label><textarea id="benefits-notes" name="notes"></textarea></div>
+      <div class="hp" aria-hidden="true">
+        <label for="benefits-website">Leave this field empty</label>
+        <input id="benefits-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <button type="submit" class="btn btn-call">Send my request</button>
+      <div class="form-status" data-status role="status" aria-live="polite"></div>
+    </form>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="never">
+        <h2>What we will never do</h2>
+        <ul>
+          <li><strong>Charge you, or take a share of your benefit.</strong> Some companies charge a cut of your back-pay to fill in the Disability Tax Credit form. We never will.</li>
+          <li><strong>Ask for your Social Insurance Number, bank details, or passwords on this website or by phone.</strong> When a navigator helps you with a real form, you keep your papers, and we do not keep copies.</li>
+          <li><strong>Give medical, legal, or financial advice.</strong> We explain programs and help with forms. Doctors, lawyers, and advocates do the rest, and we can tell you who to call.</li>
+          <li><strong>Apply for anything without you.</strong> You see and sign everything.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+<!-- shared: call us (numbers come from site-config.js; run python3 tools/sync_numbers.py after changing them) -->
+<section class="call-us" id="call-us" aria-labelledby="call-us-heading">
+  <div class="wrap">
+    <h2 id="call-us-heading">Call us</h2>
+    <p class="lead">The Reachable Line is free. Call from any phone, any time of day.</p>
+    <div class="call-card" data-number-row>
+      <p class="call-label">Reachable Line (the free help line)</p>
+      <p class="call-number"><span data-number="line">(250) 000-0000</span></p>
+      <p class="call-status" data-number-status>Number coming soon. The real number will be here the day the line opens.</p>
+    </div>
+    <div class="call-card" data-number-row>
+      <p class="call-label">Reachable Number access line (hear your messages, change the phone we ring)</p>
+      <p class="call-number"><span data-number="access">(250) 000-0000</span></p>
+      <p class="call-status" data-number-status>Number coming soon.</p>
+    </div>
+    <div class="call-card" data-number-row hidden>
+      <p class="call-label">Office</p>
+      <p class="call-number"><span data-number="office"></span></p>
+    </div>
+    <p>Prefer to write? Email <a data-email href="mailto:hello@reachablesociety.ca">hello@reachablesociety.ca</a>. Tell us if you would rather get a phone call back.</p>
+    <p class="call-emergency">In an emergency, call 911. If you are thinking about suicide, call or text 9-8-8 at any time. For other community services, call 211.</p>
+  </div>
+</section>
+<!-- /shared: call us -->
+<!-- shared: footer -->
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-brand">Reachable</p>
+      <p>Nobody out of reach.</p>
+      <p>Reachable Access Society (incorporation in progress) · Victoria, BC</p>
+    </div>
+    <div>
+      <p class="footer-h">Phone</p>
+      <p>Reachable Line: <span class="tel-inline" data-number="line">(250) 000-0000</span><br>
+        Reachable Number access line: <span class="tel-inline" data-number="access">(250) 000-0000</span><br>
+        <span data-number-status>Numbers coming soon.</span></p>
+      <p>Email: <a data-email href="mailto:hello@reachablesociety.ca">hello@reachablesociety.ca</a></p>
+    </div>
+    <div>
+      <p class="footer-h">More</p>
+      <ul>
+        <li><a href="about.html">About Reachable</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<!-- /shared: footer -->
+<script src="assets/benefits.js"></script>
+</body>
+</html>

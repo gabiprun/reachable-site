@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accessibility — Reachable</title>
+  <meta name="description" content="Reachable's accessibility statement: what this website does to be usable by everyone, what is not perfect yet, and how to tell us about a problem.">
+  <link rel="canonical" href="https://reachable.prundaru.ca/accessibility.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#0b4f6c">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Reachable">
+  <meta property="og:title" content="Accessibility — Reachable">
+  <meta property="og:description" content="Reachable's accessibility statement: what this website does to be usable by everyone, what is not perfect yet, and how to tell us about a problem.">
+  <meta property="og:url" content="https://reachable.prundaru.ca/accessibility.html">
+  <meta property="og:image" content="https://reachable.prundaru.ca/assets/og.svg">
+  <link rel="stylesheet" href="assets/site.css">
+  <!-- Numbers and email live in site-config.js. site.js is loaded here, not
+       deferred, so the "Larger text" choice is applied before the page paints. -->
+  <script src="site-config.js"></script>
+  <script src="assets/site.js"></script>
+</head>
+<body>
+<!-- shared: header (identical on every page; edit in all pages together) -->
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="index.html"><img src="favicon.svg" alt="" width="40" height="40">Reachable</a>
+    <div class="header-tools">
+      <button type="button" class="btn btn-tool" data-text-toggle aria-pressed="false">Larger text</button>
+      <button type="button" class="btn btn-tool nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+    </div>
+  </div>
+  <nav class="site-nav" id="site-nav" aria-label="Main menu">
+    <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="line.html">Reachable Line</a></li>
+        <li><a href="number.html">Reachable Number</a></li>
+        <li><a href="benefits.html">Reachable Benefits</a></li>
+        <li><a href="tech.html">Reachable Tech</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="donate.html">Donate</a></li>
+    </ul>
+  </nav>
+</header>
+<!-- /shared: header -->
+<main id="main" tabindex="-1">
+  <section class="hero">
+    <div class="wrap">
+      <h1>Accessibility</h1>
+      <p class="lead">Reachable exists because too much help is hard to reach. This website must not be one more barrier.</p>
+      <p class="small soft">Last updated 1 September 2026.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Our commitment</h2>
+      <p>We aim to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at level AA on every page, and to go further than that where it matters most to our audience: text contrast, text size, and simple language.</p>
+      <p>Everything on this website can also be done by phone. If a page does not work for you, <a href="#call-us">call us</a> and a person will do it with you. You never have to use the website.</p>
+
+      <h2>What this website does</h2>
+      <ul>
+        <li>Text starts at a larger size than most websites, with generous spacing. The <strong>Larger text</strong> button at the top of every page makes everything bigger and remembers your choice. Browser zoom works too.</li>
+        <li>Body text has a contrast of at least 7 to 1 against its background (WCAG level AAA).</li>
+        <li>Everything works with a keyboard alone. There is a "Skip to main content" link, and the current focus is always visible.</li>
+        <li>Every button, link, and form field is at least 44 pixels tall, so it is easy to tap.</li>
+        <li>Plain language. Short sentences. No jargon without an explanation.</li>
+        <li>Nothing moves, flashes, plays, or scrolls on its own. There are no carousels, videos, or pop-ups.</li>
+        <li>Headings, lists, labels, and landmarks are marked up properly for screen readers.</li>
+        <li>The site works with JavaScript turned off. The forms then open your email app instead.</li>
+        <li>It works in Windows high-contrast mode and respects your "reduce motion" setting.</li>
+        <li>Phone numbers are the biggest text on the page, and every page ends with how to call us.</li>
+      </ul>
+
+      <h2>What is not perfect yet</h2>
+      <ul>
+        <li>The benefits finder needs JavaScript. Without it, the page tells you how to get the same help by phone.</li>
+        <li>We link to government websites for applications. We do not control how accessible those are. A Reachable volunteer can help you with them.</li>
+        <li>This website is in English only for now.</li>
+      </ul>
+
+      <h2>How we test</h2>
+      <p>We test with the keyboard only, with the VoiceOver screen reader, at 200 percent zoom, with the Larger text setting on, on a small phone screen, and with JavaScript turned off. We also check the contrast of every colour we use.</p>
+
+      <h2>Tell us about a problem</h2>
+      <p>If anything on this website is hard to use, please tell us. Say which page and what happened. We will fix it or give you another way to get the same thing. Email <a data-email href="mailto:hello@reachablesociety.ca">hello@reachablesociety.ca</a> or call the number below.</p>
+    </div>
+  </section>
+</main>
+<!-- shared: call us (numbers come from site-config.js; run python3 tools/sync_numbers.py after changing them) -->
+<section class="call-us" id="call-us" aria-labelledby="call-us-heading">
+  <div class="wrap">
+    <h2 id="call-us-heading">Call us</h2>
+    <p class="lead">The Reachable Line is free. Call from any phone, any time of day.</p>
+    <div class="call-card" data-number-row>
+      <p class="call-label">Reachable Line (the free help line)</p>
+      <p class="call-number"><span data-number="line">(250) 000-0000</span></p>
+      <p class="call-status" data-number-status>Number coming soon. The real number will be here the day the line opens.</p>
+    </div>
+    <div class="call-card" data-number-row>
+      <p class="call-label">Reachable Number access line (hear your messages, change the phone we ring)</p>
+      <p class="call-number"><span data-number="access">(250) 000-0000</span></p>
+      <p class="call-status" data-number-status>Number coming soon.</p>
+    </div>
+    <div class="call-card" data-number-row hidden>
+      <p class="call-label">Office</p>
+      <p class="call-number"><span data-number="office"></span></p>
+    </div>
+    <p>Prefer to write? Email <a data-email href="mailto:hello@reachablesociety.ca">hello@reachablesociety.ca</a>. Tell us if you would rather get a phone call back.</p>
+    <p class="call-emergency">In an emergency, call 911. If you are thinking about suicide, call or text 9-8-8 at any time. For other community services, call 211.</p>
+  </div>
+</section>
+<!-- /shared: call us -->
+<!-- shared: footer -->
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-brand">Reachable</p>
+      <p>Nobody out of reach.</p>
+      <p>Reachable Access Society (incorporation in progress) · Victoria, BC</p>
+    </div>
+    <div>
+      <p class="footer-h">Phone</p>
+      <p>Reachable Line: <span class="tel-inline" data-number="line">(250) 000-0000</span><br>
+        Reachable Number access line: <span class="tel-inline" data-number="access">(250) 000-0000</span><br>
+        <span data-number-status>Numbers coming soon.</span></p>
+      <p>Email: <a data-email href="mailto:hello@reachablesociety.ca">hello@reachablesociety.ca</a></p>
+    </div>
+    <div>
+      <p class="footer-h">More</p>
+      <ul>
+        <li><a href="about.html">About Reachable</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<!-- /shared: footer -->
+<script src="assets/benefits.js"></script>
+</body>
+</html>
