@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-01",
+  "generated": "2026-09-02",
   "programs": [
     {
       "amount": "Free short appointments (typically half an hour) with a volunteer lawyer on almost any legal problem: family, wills and estates, debt, employment, housing, benefits, immigration. For people who cannot afford a lawyer and do not qualify for Legal Aid.",
@@ -175,6 +175,30 @@
       "url": "https://www2.gov.bc.ca/gov/content/governments/policies-for-government/bcea-policy-and-procedure-manual/general-supplements-and-programs/crisis-supplement"
     },
     {
+      "amount": "Pays for one room at an approved hotel or family residence so a family can stay near a child who is getting medical care in Vancouver. As of April 1, 2026 the limit is 21 nights per medical stay. The program pays the hotel or residence directly, not you. The nightly rate paid is not published, so check current amount with Variety.",
+      "audience": [
+        "family",
+        "low-income",
+        "caregiver",
+        "disability"
+      ],
+      "confidence": "high",
+      "eligibility_summary": "You live in B.C., outside Metro Vancouver, and you have Medical Services Plan (MSP) coverage with a Personal Health Number. Your child is 18 or under and is receiving medical care at BC Children's Hospital, Sunny Hill Health Centre for Children, the BC Women's Hospital neonatal intensive care unit, or BC Cancer in Vancouver. As of April 1, 2026 your total family income for the year must be under $80,000. Families living in Metro Vancouver do not qualify, though Bowen Island and the Electoral Area A island communities do. Families in Victoria are outside Metro Vancouver, so they can qualify.",
+      "gateway_for": [],
+      "help_in_victoria": "Variety - The Children's Charity, BC Family Residence Program: 604-320-0505 or toll-free 1-800-381-2040, bcfrp@variety.bc.ca. Monday to Thursday, 9:00 am to 3:00 pm.\nHope Air, for free flights to medical care: 1-877-346-4673.\nThe social worker or patient care coordinator at your child's clinic can start the paperwork with you.\nOr call 2-1-1 for other options.",
+      "how_to_apply": "1. Email bcfrp@variety.bc.ca to ask for the application form. Variety - The Children's Charity runs the program for the Province of B.C.\n2. Or call Variety at 604-320-0505, or toll-free 1-800-381-2040. The program office is open Monday to Thursday, 9:00 am to 3:00 pm.\n3. Your child's doctor confirms the treatment dates.\n4. Book only at an approved place: a partner hotel, Easter Seal House, or Ronald McDonald House on the BC Children's Hospital site for stays of three nights or more.\n5. Variety pays the approved facility directly. Do not pay first and expect to be paid back.\n6. Ask about travel separately. TAP BC gives reduced ferry, bus and air fares, and Hope Air (1-877-346-4673) arranges free flights.",
+      "jurisdiction": "bc",
+      "key": "bc-family-residence",
+      "name": "BC Family Residence Program",
+      "phone": "1-800-381-2040",
+      "phone_script": "If your child has to go to Vancouver for care at BC Children's Hospital or a similar centre, the BC Family Residence Program pays for a hotel room so your family can stay nearby, up to 21 nights per stay, for families earning under eighty thousand dollars a year. It is run by Variety, and you have to arrange it before you travel, not after. Call Variety at 1-800-381-2040, Monday to Thursday.",
+      "requires": [
+        "msp"
+      ],
+      "type": "transport",
+      "url": "https://www2.gov.bc.ca/gov/content/health/accessing-health-care/tap-bc/bc-family-residence-program"
+    },
+    {
       "amount": "50% off the passenger fare on BC Ferries for a BC resident with a permanent disability, and 50% off for one personal attendant aged 12 or older if you need one. The vehicle fare is not discounted. A CNIB card gives the same discount.",
       "audience": [
         "disability",
@@ -239,6 +263,30 @@
       "url": "https://www2.gov.bc.ca/gov/content/governments/policies-for-government/bcea-policy-and-procedure-manual/hardship-assistance/eligibility-for-hardship-assistance"
     },
     {
+      "amount": "A subsidy toward home oxygen and the equipment to deliver it, for people who meet the medical rules. The health authority chooses the equipment and an approved supplier delivers it, and respiratory therapists visit to check your oxygen level and adjust the flow. The program does not publish a dollar figure or a patient share, so check current amount with the program. If you have extended health benefits, or coverage through Veterans Affairs Canada, Non-Insured Health Benefits, ICBC or WorkSafeBC, those pay first; the program is not the first payer.",
+      "audience": [
+        "senior",
+        "disability",
+        "low-income",
+        "caregiver"
+      ],
+      "confidence": "medium",
+      "eligibility_summary": "You must have lived in B.C. more than three months, have valid Medical Services Plan (MSP) coverage, spend at least six months of the year in B.C., live permanently in the Island Health area, and be able to handle oxygen safely at home. You cannot be living in a facility governed by the Hospital Act. On top of that there are medical rules: your doctor or nurse practitioner measures the oxygen in your blood, on room air, and sends the results with the application. Not everyone with a lung condition qualifies, and a palliative diagnosis on its own does not qualify you either. A doctor or nurse practitioner must sign the application; you cannot apply by yourself.",
+      "gateway_for": [],
+      "help_in_victoria": "Island Health Home Oxygen Program, Royal Jubilee Hospital: 250-370-8840, or toll-free 1-866-370-8840.\nYour family doctor or nurse practitioner. Without them the application cannot start.\nHealthLink BC: dial 8-1-1 free anywhere in B.C., or 7-1-1 if you are deaf or hard of hearing, to speak with a nurse about breathing problems.\nOr call 2-1-1 for other options.",
+      "how_to_apply": "1. Talk to your doctor or nurse practitioner about whether home oxygen would help you. Only they can start this.\n2. They arrange the breathing tests. The tests must be done while you are breathing ordinary room air, and for a hospital discharge the results must be less than 72 hours old.\n3. They fill in the Home Oxygen Program application and fax it, with the printed test results, straight to an approved supplier. Hospital starts go to MedPro Respiratory Care; community starts go to Respiratory Homecare Solutions.\n4. The supplier delivers the equipment. You do not pick the equipment; it is chosen for your needs.\n5. A respiratory therapist visits from time to time to re-check your oxygen level and adjust the flow.\n6. Questions: Island Health Home Oxygen Program, 250-370-8840, or toll-free 1-866-370-8840.",
+      "jurisdiction": "bc",
+      "key": "bc-home-oxygen",
+      "name": "BC Home Oxygen Program (Island Health)",
+      "phone": "250-370-8840",
+      "phone_script": "The Home Oxygen Program helps pay for oxygen and equipment so you can stay at home instead of in hospital, and on the Island it is run by Island Health. Your doctor or nurse practitioner has to do a breathing test and sign the application, so the first step is booking a visit with them. You can call the program at 250-370-8840 to ask questions before you go.",
+      "requires": [
+        "msp"
+      ],
+      "type": "health",
+      "url": "https://www.islandhealth.ca/our-services/respiratory-health-services/home-oxygen-program"
+    },
+    {
       "amount": "Rent is set at 30% of your gross household income (with a minimum rent). No cash is paid to you; the subsidy is the lower rent.",
       "audience": [
         "disability",
@@ -285,6 +333,30 @@
       "requires": [],
       "type": "monthly-payment",
       "url": "https://www2.gov.bc.ca/gov/content/family-social-supports/income-assistance/apply-for-assistance"
+    },
+    {
+      "amount": "Free. PharmaCare Plan P pays 100% of the cost, including dispensing fees, for prescription and over-the-counter medicines on the Plan P palliative care drug list. There is no deductible. Your local health authority separately supplies medical equipment and supplies for care at home.",
+      "audience": [
+        "senior",
+        "disability",
+        "caregiver",
+        "low-income"
+      ],
+      "confidence": "high",
+      "eligibility_summary": "You are a B.C. resident of any age with active Medical Services Plan (MSP) coverage, you have been diagnosed with a life-threatening illness, your life expectancy is up to about six months, and you have decided with your care provider to focus on comfort rather than treatment aimed at curing the illness. You must be living at home. Home includes your own place, a family member's or friend's home, an assisted living residence, a hospice unit, or a residential care home. People in hospital or acute care do not qualify, and neither do people in a long-term care bed already covered by PharmaCare Plan B.",
+      "gateway_for": [],
+      "help_in_victoria": "Victoria Hospice, 1952 Bay Street, 250-370-8715 — palliative care at home through its response team, counselling and grief support.\nIsland Health home and community care can arrange equipment, supplies and home support. Ask your doctor for a referral.\nHealth Insurance BC / PharmaCare: 1-800-663-7100. The help desk can work in more than 140 languages.\nOr call 2-1-1 for other options.",
+      "how_to_apply": "1. Talk with your doctor or nurse practitioner about palliative care and what it would mean for you. You have to agree to this; nobody can register you without your consent.\n2. Your doctor or nurse practitioner fills in the BC Palliative Care Benefits Registration form (form HLTH 349). They use a checklist called SPICT to record your condition.\n3. They send the form to PharmaCare and to your local health authority. Registration is usually processed within 12 to 24 hours.\n4. Once registered, take your prescriptions to any B.C. pharmacy. Ask the pharmacist to bill Plan P.\n5. Contact your local health authority (Island Health in Victoria) about equipment and supplies for home.\n6. Questions about coverage: Health Insurance BC / PharmaCare at 1-800-663-7100, or 604-683-7151 in the Lower Mainland.",
+      "jurisdiction": "bc",
+      "key": "bc-palliative-care-benefits",
+      "name": "BC Palliative Care Benefits Program (PharmaCare Plan P)",
+      "phone": "1-800-663-7100",
+      "phone_script": "The BC Palliative Care Benefits Program pays the full cost of palliative medicines and helps with equipment so a person can be cared for at home instead of in hospital. It is free, there is no income test, and you need active MSP and a doctor or nurse practitioner to register you on a form called HLTH 349. In Victoria you can ask your doctor, or call Victoria Hospice at 250-370-8715 or PharmaCare at 1-800-663-7100.",
+      "requires": [
+        "msp"
+      ],
+      "type": "health",
+      "url": "https://www2.gov.bc.ca/gov/content/health/health-drug-coverage/pharmacare-for-bc-residents/who-we-cover/palliative-care-plan-p"
     },
     {
       "amount": "Rebates of up to $20,000 per household (lifetime) for home changes like ramps, grab bars, walk-in showers and stair lifts.",
@@ -469,7 +541,10 @@
       "confidence": "high",
       "eligibility_summary": "You live with a child under 18 and are mainly responsible for their care, you are a resident of Canada for tax purposes, and you or your spouse is a citizen, permanent resident, protected person, or eligible temporary resident. The amount goes down as family income rises above $38,237 (2025 income).",
       "gateway_for": [
-        "bcfb"
+        "bcfb",
+        "clb",
+        "connecting-families",
+        "telus-internet-for-good"
       ],
       "help_in_victoria": "Dial 2-1-1 for a free tax clinic or family resource centre near you. See the cvitp note for free help filing taxes.",
       "how_to_apply": "1. Apply as soon as the child is born or comes to live with you. Many BC parents apply when they register the birth (Automated Benefits Application).\n2. Or apply online in your CRA account, or mail form RC66 (Canada Child Benefits Application).\n3. File your tax return every year, and so must your spouse or partner, or the payments stop.\n4. Questions: CRA at 1-800-387-1193.",
@@ -572,6 +647,30 @@
       "url": "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/child-disability-benefit.html"
     },
     {
+      "amount": "$500 for the first year the child qualifies, then $100 for each later year the child qualifies, up to age 15. The most one child can ever get is $2,000. Employment and Social Development Canada also puts in $25 once to help cover the cost of opening the plan. You never have to put in any of your own money.",
+      "audience": [
+        "low-income",
+        "caregiver",
+        "family",
+        "youth"
+      ],
+      "confidence": "high",
+      "eligibility_summary": "The child was born in 2004 or later, has a Social Insurance Number, and lives in a low-income family. The person who cares for the child must file a tax return and be eligible for the Canada Child Benefit. For the benefit year July 1, 2026 to June 30, 2027, a family with 1 to 3 children qualifies with an adjusted family income of $58,523 or less; with 4 children, under $66,036; with 5 children, under $73,577. The money is put into a Registered Education Savings Plan (RESP). A young adult who was never signed up can still claim it for themselves, but they must apply before they turn 21.",
+      "gateway_for": [],
+      "help_in_victoria": "Free tax clinics in Victoria can file the tax returns this benefit depends on. See the free tax clinics note in this guide.\nAny bank or credit union branch can open an RESP and ask for the bond for you.\nGovernment of Canada information line: 1-800-622-6232.\nOr call 2-1-1 for other options.",
+      "how_to_apply": "1. Make sure the child has a Social Insurance Number. It is free to get one.\n2. File your tax return every year. The Canada Revenue Agency uses it to check income.\n3. Open a Registered Education Savings Plan (RESP) at a bank, credit union or other RESP provider, and ask for the Canada Learning Bond by name. You do not have to put in any money of your own.\n4. If you are 18, 19 or 20 and nobody opened a plan for you, you can open your own RESP and ask for the bond yourself. You must do this before your 21st birthday.\n5. Questions: call 1-800-O-Canada (1-800-622-6232).",
+      "jurisdiction": "federal",
+      "key": "clb",
+      "name": "Canada Learning Bond (CLB)",
+      "phone": "1-800-622-6232",
+      "phone_script": "The Canada Learning Bond is money the government puts into an education savings plan for a child from a lower-income family, and you never have to add any of your own money. It is $500 for the first year and $100 for each later year, up to $2,000 in total. To get it you need the child's Social Insurance Number, a filed tax return, and an RESP opened at a bank or credit union, and you can call 1-800-622-6232 for help.",
+      "requires": [
+        "ccb"
+      ],
+      "type": "one-time",
+      "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/registered-education-savings-plans-resps/canada-education-savings-programs-cesp/canada-learning-bond.html"
+    },
+    {
       "amount": "No cash payment to you. CLBC funds services such as supported living, respite, employment support, skill development and homemaker help, based on an assessed plan.",
       "audience": [
         "disability",
@@ -617,6 +716,28 @@
       "requires": [],
       "type": "service",
       "url": "https://clasbc.net/"
+    },
+    {
+      "amount": "$20 a month for home internet with at least 50 Mbps download speed and at least 200 GB of data, under Connecting Families 2.0 (in place since April 1, 2022). An earlier $10 a month plan with 10 Mbps and 100 GB is still in place for some households. Prices are set by each internet company, so check current amount with your provider.",
+      "audience": [
+        "low-income",
+        "senior",
+        "family",
+        "disability"
+      ],
+      "confidence": "medium",
+      "eligibility_summary": "You cannot apply on your own. The Government of Canada looks at who receives the maximum Canada Child Benefit and who receives the maximum Guaranteed Income Supplement, and mails those households a letter with a one-time access code. If you have the letter, you sign up online with the code and pick one of the taking-part internet companies. Eligibility is checked again each year. If you have no letter, you cannot register, but the same companies often have their own low-cost plans.",
+      "gateway_for": [],
+      "help_in_victoria": "Connecting Families call centre: 1-833-206-0599.\nIf you have no letter, TELUS has its own Internet for Good program for people on BC disability assistance and for families on the maximum Canada Child Benefit. See the TELUS Internet for Good note in this guide.\nThe Greater Victoria Public Library has free public computers and internet, and helps people fill in online forms.\nOr call 2-1-1 for other options.",
+      "how_to_apply": "1. Watch the mail for a letter from the Government of Canada with an access code. Do not throw it out; it looks like junk mail to many people.\n2. Go to the Connecting Families sign-up site at https://www.cf-fb.ca/ and enter the access code, your full name and your address.\n3. Choose one of the internet companies taking part. There are 19, including TELUS, Bell, Rogers and Cogeco.\n4. The company sets up the service. You deal with them for billing and support.\n5. Lost the letter, or not sure if you got one? Call the Connecting Families call centre at 1-833-206-0599.",
+      "jurisdiction": "federal",
+      "key": "connecting-families",
+      "name": "Connecting Families low-cost internet",
+      "phone": "1-833-206-0599",
+      "phone_script": "Connecting Families is a government program that gets you home internet for about twenty dollars a month if you receive the maximum Canada Child Benefit or the maximum Guaranteed Income Supplement. You cannot apply for it directly. The government mails you a letter with an access code, and you use that code to sign up online, so keep an eye on your mail and call 1-833-206-0599 if you think you should have received one.",
+      "requires": [],
+      "type": "discount",
+      "url": "https://ised-isde.canada.ca/site/ised/en/programs-and-initiatives/connecting-families-initiative"
     },
     {
       "amount": "Depends on what you paid in. Maximum $1,507.65 a month at 65 (January 2026); the average new pension at 65 is $877.01 (April 2026). Taking it at 60 cuts it up to 36%; waiting to 70 adds up to 42%. Paid for life. Taxable.",
@@ -1190,7 +1311,10 @@
         "fair-pharmacare",
         "msp-supplementary-benefits",
         "tap-bc",
-        "hope-air"
+        "bc-palliative-care-benefits",
+        "bc-home-oxygen",
+        "hope-air",
+        "bc-family-residence"
       ],
       "help_in_victoria": "Health Insurance BC: 1-800-663-7100.\nA Service BC office can take the application in person.\nFor help replacing ID or finding an outreach worker, see 211.",
       "how_to_apply": "1. Apply online at gov.bc.ca/AHDC (the BC Application for Health and Drug Coverage), at a Service BC office, or with the paper form.\n2. Show primary and secondary identification and have a photo taken at an ICBC driver licensing office for your BC Services Card.\n3. Questions or help by phone: Health Insurance BC at 1-800-663-7100 (604-683-7151 in the Lower Mainland).\n4. Once enrolled, register for Fair PharmaCare in the same online portal.",
@@ -1700,6 +1824,29 @@
       "requires": [],
       "type": "service",
       "url": "https://www.tapsbc.ca/"
+    },
+    {
+      "amount": "Three plans, each at the low price for 24 months plus tax: Internet 25 at $10 a month (25 Mbps, 300 GB of data), Internet 50 at $20 a month (50 Mbps, unlimited data), and Internet 150 at $35 a month (150 Mbps, unlimited data). After 24 months the regular price applies.",
+      "audience": [
+        "disability",
+        "low-income",
+        "senior",
+        "family",
+        "youth"
+      ],
+      "confidence": "high",
+      "eligibility_summary": "This is a TELUS company program, not a government benefit, and it only works where TELUS provides internet. You qualify through one of three streams. First, disability: you receive the BC Persons with Disabilities (PWD) benefit, the Canada Pension Plan Disability Benefit, the Canada Disability Benefit, or in Alberta the ADAP or AISH benefit. Second, families: you receive the maximum Canada Child Benefit and can show a recent Canada Child Benefit statement with family net income of $38,237 or less. Third, youth: you are between the age of majority in your province (19 in B.C.) and 26, and you have lived experience in the child welfare system, shown by a letter of eligibility signed by a ministry or agency worker. TELUS decides the final answer and it can depend on your address.",
+      "gateway_for": [],
+      "help_in_victoria": "TELUS Internet for Good: 1-833-323-3338, or internetforgood@telus.com.\nIf you get the maximum Canada Child Benefit or the maximum Guaranteed Income Supplement, also look at Connecting Families; see that note in this guide.\nThe Victoria Disability Resource Centre helps people get the proof-of-benefit documents that the disability stream asks for.\nOr call 2-1-1 for other options.",
+      "how_to_apply": "1. Gather one document that proves you receive a qualifying benefit. Examples TELUS accepts: a B.C. Ministry Confirmation of Assistance statement, a CRA Statement of Canada Pension Plan Benefits (T4A(P)), Canada Disability Benefit paperwork, an AISH Monthly Assistance Statement, or a recent Canada Child Benefit statement. Youth applicants use the province's letter of eligibility, signed by a ministry or agency worker.\n2. Apply through the Internet for Good application form on telus.com, or mail a copy of the document to: TELUS, Attention: Internet for Good Program, 4535 Canada Way, Burnaby, BC V5G 1J9. Include your full name, return address and a contact phone number.\n3. You can also email internetforgood@telus.com. If you have no email or need help, a friend, family member or case worker may apply for you.\n4. To check whether TELUS internet reaches your address, call 1-833-323-3338.\n5. Youth applications are reviewed within about one week.",
+      "jurisdiction": "bc",
+      "key": "telus-internet-for-good",
+      "name": "TELUS Internet for Good",
+      "phone": "1-833-323-3338",
+      "phone_script": "TELUS Internet for Good is a low-cost home internet plan. If you get BC disability assistance, CPP Disability or the Canada Disability Benefit, or if you get the maximum Canada Child Benefit, you can pay ten dollars a month for basic internet for two years. You send TELUS one document proving you get that benefit, and you can call them at 1-833-323-3338 or ask someone to apply for you.",
+      "requires": [],
+      "type": "discount",
+      "url": "https://www.telus.com/en/social-impact/connecting-canada/connecting-for-good-programs/people-with-disabilities"
     },
     {
       "amount": "Tax-free. Either Pain and Suffering Compensation (a lifetime monthly payment or a lump sum, your choice) or, for Second World War and Korean War service or claims made before April 2006, a Disability Pension (lifetime monthly, more if you have a spouse or children). The amount depends on how much the condition is linked to service and how severe it is. Rates are published on veterans.gc.ca; check current amount.",
@@ -3523,6 +3670,204 @@
         "when": {
           "situation": [
             "newcomer"
+          ]
+        }
+      },
+      {
+        "programs": [
+          {
+            "key": "clb",
+            "why": "If you get the Canada Child Benefit, the government will put up to $2,000 into an education savings plan for your child and you never have to add money of your own."
+          }
+        ],
+        "when": {
+          "income": [
+            "low",
+            "medium"
+          ],
+          "situation": [
+            "parent"
+          ]
+        }
+      },
+      {
+        "programs": [
+          {
+            "key": "connecting-families",
+            "why": "Families who get the maximum Canada Child Benefit are mailed a code that buys home internet for about $20 a month."
+          },
+          {
+            "key": "telus-internet-for-good",
+            "why": "Families on the maximum Canada Child Benefit can get TELUS home internet for $10 a month for two years."
+          }
+        ],
+        "when": {
+          "income": [
+            "low"
+          ],
+          "situation": [
+            "parent"
+          ]
+        }
+      },
+      {
+        "programs": [
+          {
+            "key": "connecting-families",
+            "why": "Seniors who get the maximum Guaranteed Income Supplement are mailed a code that buys home internet for about $20 a month."
+          }
+        ],
+        "when": {
+          "age": [
+            "65_plus"
+          ],
+          "income": [
+            "low"
+          ]
+        }
+      },
+      {
+        "programs": [
+          {
+            "key": "telus-internet-for-good",
+            "why": "People who get BC disability assistance can buy TELUS home internet for $10 a month for two years by sending in one proof-of-benefit document."
+          }
+        ],
+        "when": {
+          "has_pwd-bc": [
+            "yes"
+          ]
+        }
+      },
+      {
+        "programs": [
+          {
+            "key": "telus-internet-for-good",
+            "why": "If you get BC disability assistance, CPP Disability or the Canada Disability Benefit, TELUS sells home internet for $10 a month for two years."
+          }
+        ],
+        "when": {
+          "disability": [
+            "yes"
+          ],
+          "income": [
+            "low"
+          ]
+        }
+      },
+      {
+        "programs": [
+          {
+            "key": "bc-palliative-care-benefits",
+            "why": "If a doctor says an illness is life-limiting, this program pays the full cost of palliative medicines and helps with equipment so care can happen where you live."
+          }
+        ],
+        "when": {
+          "disability": [
+            "yes"
+          ],
+          "housing": [
+            "care_home"
+          ],
+          "lives_in_bc": [
+            "yes"
+          ]
+        }
+      },
+      {
+        "programs": [
+          {
+            "key": "bc-palliative-care-benefits",
+            "why": "If the person you care for has a life-threatening illness, their doctor can register them for free palliative medicines and home equipment."
+          }
+        ],
+        "when": {
+          "lives_in_bc": [
+            "yes"
+          ],
+          "needs": [
+            "help_at_home"
+          ],
+          "situation": [
+            "caregiver"
+          ]
+        }
+      },
+      {
+        "programs": [
+          {
+            "key": "bc-home-oxygen",
+            "why": "If breathing trouble means you need oxygen at home, Island Health helps pay for the oxygen and the equipment once your doctor applies."
+          }
+        ],
+        "when": {
+          "age": [
+            "65_plus"
+          ],
+          "lives_in_bc": [
+            "yes"
+          ],
+          "needs": [
+            "equipment"
+          ]
+        }
+      },
+      {
+        "programs": [
+          {
+            "key": "bc-home-oxygen",
+            "why": "People with a long-term lung or heart condition can get help with the cost of home oxygen after a breathing test their doctor arranges."
+          }
+        ],
+        "when": {
+          "disability": [
+            "yes"
+          ],
+          "lives_in_bc": [
+            "yes"
+          ],
+          "needs": [
+            "equipment",
+            "help_at_home"
+          ]
+        }
+      },
+      {
+        "programs": [
+          {
+            "key": "bc-family-residence",
+            "why": "If your child has to go to Vancouver for hospital care, this program pays for a hotel room near the hospital so your family can stay together."
+          }
+        ],
+        "when": {
+          "lives_in_bc": [
+            "yes"
+          ],
+          "needs": [
+            "travel"
+          ],
+          "situation": [
+            "parent"
+          ]
+        }
+      },
+      {
+        "programs": [
+          {
+            "key": "bc-family-residence",
+            "why": "Families earning under $80,000 whose child needs care at BC Children's Hospital can have their accommodation in Vancouver paid for."
+          }
+        ],
+        "when": {
+          "income": [
+            "low",
+            "medium"
+          ],
+          "lives_in_bc": [
+            "yes"
+          ],
+          "situation": [
+            "parent"
           ]
         }
       }
