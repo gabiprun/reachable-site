@@ -21,9 +21,12 @@ Everything on it also works with JavaScript turned off.
 | `assets/site.css` | All styles. Colours, sizes and focus rings are documented at the top |
 | `assets/site.js` | Larger-text toggle, mobile menu, number fill-in, form sender |
 | `assets/benefits.js` | The benefits finder (screener) on `benefits.html` |
+| `guides/` | The Guides section: `index.html` (library), `start-here.html` (the hub), one file per guide, and the generated `feed.xml` |
+| `assets/guides.css` `assets/guides.js` | Styles for guide pages · the search and topic filter on the guides index |
 | `assets/og.svg` `favicon.svg` | Social preview image and icon |
 | `tools/sync_numbers.py` | Copies numbers/email from `site-config.js` into the HTML (for no-JavaScript visitors) |
 | `tools/check_site.py` | Pre-push checks: unclosed tags, one h1, broken links, missing labels |
+| `tools/build_guides.py` | Builds the guides index, `guides/feed.xml` and the sitemap's guide entries from the guide pages |
 | `CNAME` `.nojekyll` `robots.txt` `sitemap.xml` | GitHub Pages plumbing |
 
 ## Where the phone numbers live
@@ -73,6 +76,66 @@ name; `requires` shows "First you need: …" unless `has_<key>` was answered
 knowledge base in `reachable/kb/`. Regenerate it there; do not edit it here. The
 site depends only on the schema, not on which programs are in it.
 
+## The guides
+
+`guides/` holds the plain-language guides. They are ordinary HTML pages built on
+the same skeleton as everything else — copy `guides/rdsp.html` to start a new one.
+
+Each guide declares itself to the builder with meta tags in its `<head>`:
+
+```html
+<meta name="guide:summary" content="One or two plain sentences for the index card.">
+<meta name="guide:topics"  content="money,disability">
+<meta name="guide:updated" content="2026-09-03">
+<meta name="guide:reading" content="9">
+<meta name="guide:order"   content="20">
+```
+
+`guide:topics` must come from the fixed vocabulary in `tools/build_guides.py`
+(`money`, `disability`, `seniors`, `health`, `housing`, `getting-around`,
+`everyday-costs`, `caregivers`). A typo is an error rather than a silent new
+filter button nobody can press. `guide:order` sorts the index — low numbers
+first; `start-here.html` is 10 and is flagged "Start here" on its card.
+
+Then run:
+
+```
+python3 tools/build_guides.py
+```
+
+That rewrites three things from the guides themselves, between `BEGIN`/`END`
+markers so nothing else on the page is touched:
+
+- the topic buttons and guide cards in `guides/index.html`,
+- `guides/feed.xml` (RSS, newest first),
+- the `guides/` entries in `sitemap.xml`.
+
+`python3 tools/build_guides.py --check` fails if any of those are out of date, so
+it belongs next to `check_site.py` in the pre-push routine. The builder also
+copies each guide's `<h2>`/`<h3>` headings onto its index card as invisible
+`data-keywords`, which is what makes searching the index for a word used *inside*
+a guide ("HandyDART", "Plan G") actually find it.
+
+### What a guide must do
+
+These pages are read by people who are tired, in pain, or on a phone, and who
+have often already been given the runaround. The house rules:
+
+- **Every figure traces to a source.** Each guide ends with "Where these numbers
+  come from": real URLs and the date they were read. If a number could not be
+  verified, write "check the current amount" and give a phone number — never
+  guess, and never round a figure into something tidier than the source says.
+- **Say when something has ended or does not apply here.** Sending a reader
+  chasing a programme that is gone costs them a trip they may not be able to make.
+- **Tell them what to say.** Most guides carry a `.script` block with the actual
+  words to use on the phone; that is usually the hard part, not the eligibility.
+- **Say what to do when the answer is no.** First refusals are often wrong and
+  many are overturned with free advocacy.
+- **Date every page** with the `.stamp` ("Checked on …") so a reader can judge for
+  themselves whether to phone and confirm.
+
+Guides carry no forms and collect nothing. They are just pages.
+
 ## How to edit
 
 - Edit the HTML directly. Keep plain language (the audience includes seniors
@@ -100,7 +163,11 @@ python3 -m http.server 8391
 # open http://localhost:8391/
 ```
 
-Check before pushing: `python3 tools/check_site.py && python3 tools/sync_numbers.py --check`.
+Check before pushing:
+
+```
+python3 tools/check_site.py && python3 tools/sync_numbers.py --check && python3 tools/build_guides.py --check
+```
 
 ## Deploy
 

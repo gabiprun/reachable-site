@@ -1,0 +1,215 @@
+/* ============================================================
+   Reachable — styles for the Guides section only.
+
+   Loaded by guides/index.html and every guide page, after
+   assets/site.css. Everything here builds on the tokens declared
+   there (--ink, --brand, --measure, …); nothing is redefined.
+
+   The same accessibility rules apply as in site.css:
+   - No colour-only meaning. Every chip and stamp also carries words.
+   - Every clickable thing is at least 44px tall.
+   - Contrast >= 7:1 for body text, >= 4.5:1 for chips and buttons.
+   - No animation.
+   ============================================================ */
+
+/* ---------- Guide index: search and topic filter ---------- */
+
+.guide-filters { margin: 0 0 1.5rem; }
+
+.guide-search { max-width: var(--measure); margin-bottom: 1.25rem; }
+.guide-search label { display: block; font-weight: 700; margin-bottom: 0.35rem; }
+.guide-search input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+}
+
+/* Topic buttons. Real <button>s, so they work with a keyboard and a
+   screen reader announces the pressed state. */
+.topic-list { display: flex; flex-wrap: wrap; gap: 0.6rem; padding: 0; margin: 0 0 1rem; list-style: none; }
+.topic-list li { margin: 0; }
+.topic-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.45rem 1rem;
+  border: 3px solid var(--brand);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--brand);
+  font: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.topic-btn:hover { background: var(--brand-soft); color: var(--brand-dark); }
+.topic-btn[aria-pressed="true"] { background: var(--brand); color: #fff; }
+.topic-btn[aria-pressed="true"]::before { content: "\2713\00a0"; }
+
+.filter-count { font-weight: 700; margin: 0 0 1rem; }
+
+/* ---------- Guide index: the list of guides ---------- */
+
+.guide-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.25rem; }
+.guide-list li { margin: 0; }
+
+.guide-card {
+  border: 3px solid var(--brand);
+  border-radius: var(--radius);
+  background: #fff;
+  padding: 1.25rem 1.4rem;
+  height: 100%;
+}
+.guide-card h3 { margin: 0 0 0.4rem; font-size: 1.35rem; }
+.guide-card h3 a { text-decoration-thickness: 0.1em; }
+.guide-card p { margin-bottom: 0.75rem; }
+.guide-card .guide-meta { margin-bottom: 0; }
+
+/* A guide the reader should start with. Marked with words as well as colour. */
+.guide-card-start { border-color: var(--warn-border); background: var(--warn-bg); }
+
+.guide-flag {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b3d00;
+  margin-bottom: 0.35rem;
+}
+
+/* Small grey line under a card: topics, how long it takes to read. */
+.guide-meta { color: var(--ink-soft); font-size: 0.95rem; margin: 0.5rem 0 0; }
+.guide-meta > * + *::before { content: " · "; }
+
+/* ---------- Guide page: header block ---------- */
+
+.guide-head { background: var(--paper-alt); padding: 2rem 0 1.5rem; }
+.guide-head h1 { margin-bottom: 0.5rem; }
+.guide-head .lead { margin-bottom: 0.75rem; }
+
+.crumbs { font-size: 0.95rem; margin-bottom: 0.75rem; }
+.crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0; margin: 0; }
+.crumbs li { margin: 0; }
+.crumbs li + li::before { content: "\203A"; margin-right: 0.4rem; color: var(--ink-soft); }
+
+/* "Checked on <date>" stamp. Words, not a colour code. */
+.stamp {
+  display: inline-block;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* ---------- Guide page: "at a glance" ---------- */
+
+.glance {
+  border: 3px solid var(--brand);
+  border-left-width: 10px;
+  border-radius: var(--radius);
+  background: var(--brand-soft);
+  padding: 1.1rem 1.4rem;
+  max-width: var(--measure);
+  margin: 0 0 1.5rem;
+}
+.glance h2 { margin: 0 0 0.75rem; font-size: 1.3rem; }
+.glance dl { margin: 0; }
+.glance dt { font-weight: 800; margin-top: 0.75rem; }
+.glance dt:first-of-type { margin-top: 0; }
+.glance dd { margin: 0.15rem 0 0; }
+
+/* ---------- Guide page: contents ---------- */
+
+.toc {
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  background: #fff;
+  padding: 1rem 1.4rem 1.1rem;
+  max-width: var(--measure);
+  margin: 0 0 2rem;
+}
+.toc h2 { margin: 0 0 0.5rem; font-size: 1.2rem; }
+.toc ol { margin: 0; padding-left: 1.3rem; }
+.toc li { margin-bottom: 0.15rem; }
+.toc a { display: inline-block; min-height: 2.25rem; padding: 0.35rem 0; }
+
+/* ---------- Guide page: body ---------- */
+
+.guide-body { padding: 2rem 0 1rem; }
+.guide-body h2 { padding-top: 0.5rem; }
+.guide-body h2:first-child { margin-top: 0; }
+
+/* A plain table that turns into stacked rows on a narrow screen. */
+.table-wrap { overflow-x: auto; max-width: var(--measure); margin-bottom: 1.25rem; }
+.g-table { border-collapse: collapse; width: 100%; font-size: 1rem; }
+.g-table caption { text-align: left; font-weight: 700; padding-bottom: 0.5rem; }
+.g-table th, .g-table td { border: 2px solid var(--ink); padding: 0.6rem 0.7rem; text-align: left; vertical-align: top; }
+.g-table th { background: var(--paper-alt); }
+
+/* "Watch out" and "Good news" call-outs. Both carry a word label. */
+.callout {
+  border: 3px solid var(--ink);
+  border-left-width: 10px;
+  border-radius: var(--radius);
+  background: #fff;
+  padding: 1rem 1.25rem;
+  max-width: var(--measure);
+  margin: 0 0 1.25rem;
+}
+.callout > :last-child { margin-bottom: 0; }
+.callout h3 { margin-top: 0; font-size: 1.15rem; }
+.callout-warn { border-color: var(--warn-border); background: var(--warn-bg); }
+.callout-good { border-color: var(--call); background: var(--ok-bg); }
+.callout-info { border-color: var(--brand); background: var(--brand-soft); }
+
+/* What to say on the phone. Set apart because people read it aloud. */
+.script {
+  border: 3px dashed var(--brand);
+  border-radius: var(--radius);
+  background: #fff;
+  padding: 1rem 1.25rem;
+  max-width: var(--measure);
+  margin: 0 0 1.25rem;
+  font-size: 1.1rem;
+}
+.script p:last-child { margin-bottom: 0; }
+.script .script-label { font-weight: 800; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--brand-dark); margin-bottom: 0.4rem; }
+
+/* Related guides at the foot of an article. */
+.related { list-style: none; padding: 0; margin: 0 0 1.5rem; max-width: var(--measure); }
+.related li { margin-bottom: 0.6rem; }
+.related a { font-weight: 700; }
+.related .soft { font-weight: 400; }
+
+/* Sources. Long URLs must wrap, not push the page sideways. */
+.sources { font-size: 0.95rem; }
+.sources li { overflow-wrap: anywhere; margin-bottom: 0.5rem; }
+
+/* Numbers people phone, inside an article. */
+.phone-block {
+  border: 3px solid var(--call);
+  border-radius: var(--radius);
+  background: var(--ok-bg);
+  padding: 1rem 1.25rem;
+  max-width: var(--measure);
+  margin: 0 0 1.25rem;
+}
+.phone-block > :last-child { margin-bottom: 0; }
+.phone-block .big-tel { font-size: 1.5rem; font-weight: 800; }
+.phone-block .big-tel a { color: var(--call-dark); }
+.phone-block .big-tel a:visited { color: var(--call-dark); }
+
+/* ---------- Print: a guide should print like a handout ---------- */
+@media print {
+  .guide-filters, .toc, .topic-list, .guide-search { display: none; }
+  .glance, .callout, .script, .phone-block { border-width: 2px; background: none; }
+  .guide-body a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; word-break: break-all; }
+}

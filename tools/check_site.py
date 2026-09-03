@@ -158,7 +158,7 @@ def check_target(page: Path, kind: str, target: str, errors: list[str]) -> None:
 
 
 def main() -> int:
-    pages = sorted(ROOT.glob("*.html"))
+    pages = sorted(ROOT.glob("*.html")) + sorted(ROOT.glob("guides/*.html"))
     if not pages:
         print("no HTML pages found in", ROOT)
         return 1
@@ -177,7 +177,7 @@ def main() -> int:
             else:
                 check_target(page, kind, target, errors)
         status = "ok " if not errors else "FAIL"
-        print(f"{status} {page.name}: {c.title.strip()!r}, {len(c.links)} links, h1={c.h1}")
+        print(f"{status} {page.relative_to(ROOT)}: {c.title.strip()!r}, {len(c.links)} links, h1={c.h1}")
         for e in errors:
             print("     -", e)
         failed += bool(errors)
