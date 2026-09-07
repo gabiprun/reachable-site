@@ -146,6 +146,9 @@ def check_target(page: Path, kind: str, target: str, errors: list[str]) -> None:
     if re.match(r"^(https?:|mailto:|tel:)", target):
         return
     path, _, frag = target.partition("#")
+    # Cache-busting query strings (assets/guides.js?v=abc123) are part of the
+    # URL but not of the filename, so drop them before looking on disk.
+    path, _, _query = path.partition("?")
     if not path:
         return  # same-page anchor: checked via ids below
     file = (page.parent / path).resolve()

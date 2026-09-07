@@ -37,16 +37,36 @@
     var topic = '';       // '' means "all topics"
     var query = '';
 
+    // Full text of every guide, fetched the first time someone searches.
+    // Until it arrives (or if it never does) we search the card text and the
+    // keywords the builder baked in, so the box always does something useful.
+    var fullText = null;
+
+    function loadFullText() {
+      if (fullText !== null) { return; }
+      fullText = {};                       // don't fetch twice
+      try {
+        fetch(list.getAttribute('data-search-index') || 'search-index.json')
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (data) { if (data) { fullText = data; apply(); } })
+          .catch(function () { /* keep the card-text fallback */ });
+      } catch (e) { /* no fetch: keep the fallback */ }
+    }
+
+    function cardFile(card) {
+      var a = card.querySelector('h3 a');
+      return a ? a.getAttribute('href') : '';
+    }
+
     function matches(card) {
       if (topic && (' ' + card.getAttribute('data-topics') + ' ').indexOf(' ' + topic + ' ') === -1) {
         return false;
       }
       if (!query) { return true; }
-      // Title, summary and topic labels, plus the guide's own section
-      // headings, which the builder copies onto the card as keywords so a
-      // search for a word used inside a guide still finds it.
       var haystack = (card.textContent + ' ' + (card.getAttribute('data-keywords') || '')).toLowerCase();
-      return haystack.indexOf(query) !== -1;
+      if (haystack.indexOf(query) !== -1) { return true; }
+      var body = fullText && fullText[cardFile(card)];
+      return !!body && body.indexOf(query) !== -1;
     }
 
     function apply() {
@@ -84,6 +104,7 @@
     if (search) {
       search.addEventListener('input', function () {
         query = search.value.trim().toLowerCase();
+        if (query) { loadFullText(); }
         apply();
       });
       // Enter in a lone text field would submit and reload the page.

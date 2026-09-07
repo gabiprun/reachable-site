@@ -21,7 +21,7 @@ Everything on it also works with JavaScript turned off.
 | `assets/site.css` | All styles. Colours, sizes and focus rings are documented at the top |
 | `assets/site.js` | Larger-text toggle, mobile menu, number fill-in, form sender |
 | `assets/benefits.js` | The benefits finder (screener) on `benefits.html` |
-| `guides/` | The Guides section: `index.html` (library), `start-here.html` (the hub), one file per guide, and the generated `feed.xml` |
+| `guides/` | The Guides section: `index.html` (library), `start-here.html` (the hub), one file per guide, plus the generated `feed.xml` and `search-index.json` |
 | `assets/guides.css` `assets/guides.js` | Styles for guide pages · the search and topic filter on the guides index |
 | `assets/og.svg` `favicon.svg` | Social preview image and icon |
 | `tools/sync_numbers.py` | Copies numbers/email from `site-config.js` into the HTML (for no-JavaScript visitors) |
@@ -103,12 +103,36 @@ Then run:
 python3 tools/build_guides.py
 ```
 
-That rewrites three things from the guides themselves, between `BEGIN`/`END`
-markers so nothing else on the page is touched:
+That rewrites everything generated, between `BEGIN`/`END` markers so nothing
+else on the page is touched:
 
 - the topic buttons and guide cards in `guides/index.html`,
 - `guides/feed.xml` (RSS, newest first),
+- `guides/search-index.json` (see below),
 - the `guides/` entries in `sitemap.xml`.
+
+### How search works, and why the URLs carry `?v=`
+
+The search box does full-text search over every guide. The text does not live
+in `index.html` — that would make the page enormous for the many visitors who
+never search — but in `guides/search-index.json`, which `assets/guides.js`
+fetches the first time somebody types. If that fetch fails the box still works,
+falling back to the card titles, summaries and the keywords the builder bakes
+into each card.
+
+Both `search-index.json` and `guides.js` are referenced with a `?v=<hash>`
+built from the file's own content:
+
+```html
+<ul class="guide-list" data-guide-list data-search-index="search-index.json?v=5732b4e0">
+<script src="../assets/guides.js?v=80a85ee1" defer></script>
+```
+
+This is not decoration. Without it a returning visitor keeps running the
+previous copy of the search code against a freshly built index, and gets stale
+or empty results — exactly the bug that showed up in testing, where a cached
+index from a half-written guide made real search terms return nothing. The hash
+changes only when the file changes, so `--check` stays quiet on a no-op build.
 
 `python3 tools/build_guides.py --check` fails if any of those are out of date, so
 it belongs next to `check_site.py` in the pre-push routine. The builder also

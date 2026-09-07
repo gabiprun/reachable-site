@@ -29,6 +29,7 @@ by its guide:order.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import re
 import sys
@@ -50,8 +51,17 @@ TOPICS = [
     ("getting-around", "Getting around"),
     ("everyday-costs", "Everyday costs"),
     ("caregivers", "Caregivers"),
+    ("work-school", "Work and school"),
+    ("community", "Local organisations"),
+    ("crisis", "Urgent help"),
+    ("indigenous", "First Nations, Inuit and Métis"),
 ]
 TOPIC_LABELS = dict(TOPICS)
+
+# Roughly how many characters of invisible search keywords each index card
+# may carry. Keeps guides/index.html from ballooning while still covering the
+# terms people actually type.
+KEYWORD_BUDGET = 2600
 
 MONTHS = ["January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December"]
@@ -112,18 +122,61 @@ def read_guide(path: Path) -> dict:
         )
 
     # The index search box should find a guide by a word that appears inside
-    # it ("HandyDART", "SAFER", "Plan G"), not only by its title and summary.
-    # The section headings are a good, cheap summary of what a guide covers,
-    # so they travel with the card as invisible keywords.
-    keywords = []
-    for m in re.finditer(r"<h[23][^>]*>(.*?)</h[23]>", source, re.S):
-        text = html.unescape(re.sub(r"<[^>]+>", " ", m.group(1)))
-        text = re.sub(r"\s+", " ", text).strip()
-        if text and text.lower() not in ("what is on this page", "at a glance"):
+    # it ("NIHB", "food bank", "attendant", "Plan G"), not only by its title
+    # and summary. Headings alone proved too thin — the terms people actually
+    # type often live in a table caption, an "at a glance" row or a bolded
+    # phrase. So those travel with the card too, as invisible keywords.
+    SKIP = {"what is on this page", "at a glance", "call us", "related guides",
+            "where these numbers come from", "where this comes from"}
+    patterns = (
+        r"<h[23][^>]*>(.*?)</h[23]>",      # section headings
+        r"<strong[^>]*>(.*?)</strong>",    # the phrases authors chose to bold
+        r"<caption[^>]*>(.*?)</caption>",  # table captions
+        r"<dt[^>]*>(.*?)</dt>",            # "at a glance" rows
+    )
+    groups: list[list[str]] = []
+    for pattern in patterns:
+        found = []
+        for m in re.finditer(pattern, source, re.S):
+            text = html.unescape(re.sub(r"<[^>]+>", " ", m.group(1)))
+            text = re.sub(r"\s+", " ", text).strip()
+            if text and text.lower() not in SKIP and len(text) >= 3:
+                found.append(text)
+        groups.append(found)
+
+    # Interleave the groups rather than draining them in order. A guide with
+    # many headings would otherwise spend the whole budget on headings and
+    # never contribute a bolded phrase, which is exactly where terms like
+    # "food bank" and "attendant" live.
+    keywords: list[str] = []
+    seen: set[str] = set()
+    used = 0
+    for i in range(max((len(g) for g in groups), default=0)):
+        for g in groups:
+            if i >= len(g):
+                continue
+            text = g[i]
+            key = text.lower()
+            if key in seen:
+                continue
+            if used + len(text) + 1 > KEYWORD_BUDGET:
+                continue
+            seen.add(key)
             keywords.append(text)
+            used += len(text) + 1
+
+    # Full visible body text, for the lazily-loaded search index. Trying to
+    # guess which elements matter (headings? bold? captions?) kept missing the
+    # terms people actually type, so the index simply carries the whole guide.
+    body_m = re.search(r'guide-body"[^>]*>(.*?)<!-- shared: call us', source, re.S)
+    body = body_m.group(1) if body_m else source
+    body = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", body, flags=re.S)
+    full_text = html.unescape(re.sub(r"<[^>]+>", " ", body))
+    full_text = re.sub(r"\s+", " ", full_text).strip().lower()
 
     return {
         "file": path.name,
+        "text": full_text,
         "heading": heading,
         "summary": summary,
         "topics": topics,
@@ -168,6 +221,31 @@ def render_topics(guides: list[dict]) -> str:
     return "\n".join(out)
 
 
+def render_script_tag() -> str:
+    """The <script> tag for assets/guides.js, stamped with its own hash.
+
+    Same reasoning as the search index: without this, a visitor who has been
+    to the site before keeps running the previous copy of the search code
+    against a freshly built index.
+    """
+    js = (ROOT / "assets" / "guides.js").read_bytes()
+    digest = hashlib.md5(js).hexdigest()[:8]
+    return f'<script src="../assets/guides.js?v={digest}" defer></script>'
+
+
+def render_list_open(search_json: str) -> str:
+    """The <ul> that holds the cards, carrying the versioned search-index URL.
+
+    The URL is stamped with a hash of the index's own content. A rebuilt index
+    therefore gets a new URL, so a browser (or GitHub Pages' CDN) can never
+    serve yesterday's search data against today's guides — and an unchanged
+    index keeps its URL, so --check stays quiet.
+    """
+    digest = hashlib.md5(search_json.encode("utf-8")).hexdigest()[:8]
+    return (f'<ul class="guide-list" data-guide-list '
+            f'data-search-index="search-index.json?v={digest}">')
+
+
 def render_cards(guides: list[dict]) -> str:
     out = []
     for g in guides:
@@ -200,6 +278,18 @@ def replace_block(text: str, marker: str, body: str, path: Path) -> str:
         raise GuideError(f"{path.name}: missing {begin} / {end} markers")
     indent = m.group(2)
     return text[: m.start()] + f"{begin}\n{body}\n{indent}{end}" + text[m.end():]
+
+
+def build_search_index(guides: list[dict]) -> str:
+    """guides/search-index.json — {filename: full lowercased body text}.
+
+    Fetched by assets/guides.js the first time someone types in the search
+    box, so it costs nothing for the many visitors who never search. If it
+    fails to load, guides.js falls back to searching the visible cards.
+    """
+    import json
+    return json.dumps({g["file"]: g["text"] for g in guides},
+                      ensure_ascii=False, separators=(",", ":")) + "\n"
 
 
 def build_feed(guides: list[dict]) -> str:
@@ -276,19 +366,26 @@ def main() -> int:
 
     index_path = GUIDES / "index.html"
     feed_path = GUIDES / "feed.xml"
+    search_path = GUIDES / "search-index.json"
     sitemap_path = ROOT / "sitemap.xml"
 
     index_text = index_path.read_text(encoding="utf-8")
+    new_search = build_search_index(guides)
     new_index = replace_block(index_text, "generated topic buttons",
                               "      " + render_topics(guides), index_path)
+    new_index = replace_block(new_index, "generated guide list",
+                              "    " + render_list_open(new_search), index_path)
     new_index = replace_block(new_index, "generated guide cards",
                               render_cards(guides), index_path)
+    new_index = replace_block(new_index, "generated script tag",
+                              "  " + render_script_tag(), index_path)
     new_feed = build_feed(guides)
     new_sitemap = build_sitemap(guides, sitemap_path.read_text(encoding="utf-8"))
 
     targets = [
         (index_path, index_text, new_index),
         (feed_path, feed_path.read_text(encoding="utf-8") if feed_path.exists() else "", new_feed),
+        (search_path, search_path.read_text(encoding="utf-8") if search_path.exists() else "", new_search),
         (sitemap_path, sitemap_path.read_text(encoding="utf-8"), new_sitemap),
     ]
 
@@ -306,7 +403,8 @@ def main() -> int:
         p.write_text(new, encoding="utf-8")
 
     topics_used = sorted({t for g in guides for t in g["topics"]})
-    print(f"{len(guides)} guides -> guides/index.html, guides/feed.xml, sitemap.xml")
+    print(f"{len(guides)} guides -> guides/index.html, guides/feed.xml, "
+          f"guides/search-index.json, sitemap.xml")
     print(f"topics: {', '.join(topics_used)}")
     for g in guides:
         print(f"  {g['order']:>3}  {g['file']:<34} {g['updated']}  {', '.join(g['topics'])}")
